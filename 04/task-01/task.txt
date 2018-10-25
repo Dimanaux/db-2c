@@ -1,0 +1,7 @@
+1) создать таблицу sequences , в которую добавить поля (sequence_1, sequence_10, sequence_from100_minus_5).
+Каждое из полей необходимо привязать к sequence, который необходимо предварительно создать.
+sequence_1 - начинается с 0, шаг = 1.
+sequence_10 - начинается с 0, шаг = 10.
+sequence_from100_minus_5 начинается с 100, шаг = -5.
+Для привзяки с колонкой -DEFAULT nextval('sequenceName')
+Дока - https://www.postgresql.org/docs/10/static/sql-createsequence.html
