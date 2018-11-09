@@ -49,18 +49,18 @@ SELECT DISTINCT d.id, d.name, AVG(e.salary) AS avg_salary
 --     GROUP BY d.id;
 
 
--- WITH max_avg_salary AS (
---   SELECT MAX(avg_salary) FROM (
---     SELECT d.id, d.name, AVG(e.salary) AS avg_salary
---       FROM department d
---         INNER JOIN employee e
---         ON d.id = e.department_id
---       GROUP BY d.id
---     ) AS department_average_salary
---   )
--- SELECT * FROM department_average_salary
---   WHERE
---     avg_salary = max_avg_salary;
+WITH max_avg_salary AS (
+  SELECT MAX(avg_salary) FROM (
+    SELECT d.id, d.name, AVG(e.salary) AS avg_salary
+      FROM department d
+        INNER JOIN employee e
+        ON d.id = e.department_id
+      GROUP BY d.id
+    ) AS department_average_salary
+  )
+SELECT * FROM department_average_salary
+  WHERE avg_salary = (SELECT max(max) FROM max_avg_salary);
+
 
 -- task 02
 SELECT * FROM department_average_salary
